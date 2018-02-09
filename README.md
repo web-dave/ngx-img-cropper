@@ -152,7 +152,7 @@ fileChangeListener($event) {
 
 # Changelog
 
-### Release 0.8.10
+### Release 0.9.2
 
 * Angular 5 support
 
