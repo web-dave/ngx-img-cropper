@@ -16,6 +16,17 @@ The crop image can either be 1:1 or scaled to fit an area.
 
 ![Screenshot](https://raw.githubusercontent.com/cstefanache/cstefanache.github.io/master/assets/img/cropper.png "Screenshot")
 
+## contributing
+
+```
+git clone
+npm i
+npm start
+```
+
+create a branch for your feature and send a PR <br>
+Let's do awesome stuff!
+
 ## Testing
 
 ```
