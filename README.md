@@ -152,6 +152,10 @@ fileChangeListener($event) {
 
 # Changelog
 
+### Release 0.8.10
+
+* Angular 5 support
+
 ### Release 0.8.6
 
 * Dist package cleanup (PR by: @leosvelperez)
