@@ -156,6 +156,11 @@ fileChangeListener($event) {
 
 * Angular 5 support
 
+### Release 0.8.9
+Fix for #36 - Add button to crop
+Fix for #186 - Handle Hi-Res images
+Fix for #92 - IOS crop issue
+
 ### Release 0.8.6
 
 * Dist package cleanup (PR by: @leosvelperez)
