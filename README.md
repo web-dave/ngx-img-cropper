@@ -24,6 +24,12 @@ npm i
 npm start
 ```
 
+Do your magic
+
+```
+
+```
+
 create a branch for your feature and send a PR <br>
 Let's do awesome stuff!
 
