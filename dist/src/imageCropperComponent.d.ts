@@ -1,9 +1,10 @@
-import { Renderer2, ElementRef, EventEmitter, AfterViewInit, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
-import { ImageCropper } from './imageCropper';
-import { CropperSettings } from './cropperSettings';
-import { CropPosition } from './model/cropPosition';
+import { Renderer2, ElementRef, EventEmitter, AfterViewInit, OnChanges, OnDestroy, SimpleChanges } from "@angular/core";
+import { ImageCropper } from "./imageCropper";
+import { CropperSettings } from "./cropperSettings";
+import { CropPosition } from "./model/cropPosition";
 export declare class ImageCropperComponent implements AfterViewInit, OnChanges, OnDestroy {
     cropcanvas: ElementRef;
+    fileInput: ElementRef;
     settings: CropperSettings;
     image: any;
     inputImage: any;
