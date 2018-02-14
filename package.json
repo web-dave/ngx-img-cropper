@@ -12,7 +12,7 @@
     "version":
       "git commit -am \"Prerelease updates\" && git checkout -b release && git add -f ./",
     "postversion":
-      "git push --tags && git checkout master && git branch -D release && git push && npm publish",
+      "git push --tags && git checkout master && git branch -D release && git push",
     "release": "npm run copy:release && cd dist && npm publish",
     "release:patch": "npm version patch && npm run release",
     "release:minor": "npm version minor && npm run release",
