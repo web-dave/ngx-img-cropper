@@ -229,3 +229,25 @@ Please change your system.config files to make use of the js files.
 ```
  'ngx-img-cropper' :           { main: 'index.js', defaultExtension: 'js' }
 ```
+
+## Build
+should work with one of these
+```
+ "release:patch": "npm version patch && npm run release",
+ "release:minor": "npm version minor && npm run release",
+ "release:major": "npm version major && npm run release",
+```
+
+Steps:
+1.  npm test (no tests yet)
+2.  npm run build
+3.  git commit -am \"Prerelease updates\"
+4.  git checkout -b release
+5.  git add -f ./
+6.  git push --tags
+7.  git checkout master
+8.  git branch -D release
+9.  git push
+10. npm run copy:release
+11. cd dist
+12. npm publish
