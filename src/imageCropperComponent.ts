@@ -52,6 +52,7 @@ export class ImageCropperComponent
   >();
 
   @Output() public onCrop: EventEmitter<any> = new EventEmitter();
+  @Output() imageSet: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   public croppedWidth: number;
   public croppedHeight: number;
@@ -153,7 +154,7 @@ export class ImageCropperComponent
       this.image.image = this.cropper.getCroppedImageHelper().src;
       this.onCrop.emit(this.cropper.getCropBounds());
       this.updateCropBounds();
-    } 
+    }
   }
 
   public onMouseMove(event: MouseEvent): void {
@@ -197,6 +198,7 @@ export class ImageCropperComponent
   }
 
   public setImage(image: HTMLImageElement, newBounds: any = null) {
+    this.imageSet.emit(true);
     this.renderer.setAttribute(
       this.cropcanvas.nativeElement,
       "class",

@@ -68,10 +68,11 @@ var CropperSettings = /** @class */ (function () {
             return this._keepAspect;
         },
         set: function (val) {
-            if (val === false && this._rounded) {
-                throw new Error("Cannot set keep aspect to false on rounded cropper. Ellipsis not supported");
-            }
             this._keepAspect = val;
+            if (this._rounded === true && this._keepAspect === false) {
+                console.error("Cannot set keep aspect to false on rounded cropper. Ellipsis not supported");
+                this._keepAspect = true;
+            }
         },
         enumerable: true,
         configurable: true

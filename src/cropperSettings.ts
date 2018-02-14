@@ -102,13 +102,13 @@ export class CropperSettings implements ICropperSettings {
   }
 
   set keepAspect(val: boolean) {
-    if (val === false && this._rounded) {
-      throw new Error(
+    this._keepAspect = val;
+    if (this._rounded === true && this._keepAspect === false) {
+      console.error(
         "Cannot set keep aspect to false on rounded cropper. Ellipsis not supported"
       );
+      this._keepAspect = true;
     }
-
-    this._keepAspect = val;
   }
 
   get keepAspect(): boolean {

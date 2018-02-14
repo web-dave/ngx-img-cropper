@@ -7,6 +7,7 @@ var ImageCropperComponent = /** @class */ (function () {
     function ImageCropperComponent(renderer) {
         this.cropPositionChange = new EventEmitter();
         this.onCrop = new EventEmitter();
+        this.imageSet = new EventEmitter();
         this.renderer = renderer;
     }
     ImageCropperComponent.prototype.ngAfterViewInit = function () {
@@ -112,6 +113,7 @@ var ImageCropperComponent = /** @class */ (function () {
     ImageCropperComponent.prototype.setImage = function (image, newBounds) {
         var _this = this;
         if (newBounds === void 0) { newBounds = null; }
+        this.imageSet.emit(true);
         this.renderer.setAttribute(this.cropcanvas.nativeElement, "class", this.settings.cropperClass + " " + this.settings.croppingClass);
         this.raf = window.requestAnimationFrame(function () {
             if (_this.raf) {
@@ -229,6 +231,7 @@ var ImageCropperComponent = /** @class */ (function () {
         "cropPosition": [{ type: Input },],
         "cropPositionChange": [{ type: Output },],
         "onCrop": [{ type: Output },],
+        "imageSet": [{ type: Output },],
     };
     return ImageCropperComponent;
 }());

@@ -14,9 +14,7 @@
     "stripInternal": false,
     "outDir": "dist"
   },
-  "files": [
-    "index.ts"
-  ],
+  "files": ["index.ts"],
   "angularCompilerOptions": {
     "genDir": "dist",
     "skipTemplateCodegen": true,
