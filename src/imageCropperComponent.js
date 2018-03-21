@@ -18,6 +18,7 @@ var ImageCropperComponent = (function () {
     function ImageCropperComponent(renderer) {
         this.cropPositionChange = new core_1.EventEmitter();
         this.onCrop = new core_1.EventEmitter();
+        this.imageSet = new core_1.EventEmitter();
         this.renderer = renderer;
     }
     ImageCropperComponent.prototype.ngAfterViewInit = function () {
@@ -84,9 +85,6 @@ var ImageCropperComponent = (function () {
             this.onCrop.emit(this.cropper.getCropBounds());
             this.updateCropBounds();
         }
-        else if (!this.settings.noFileInput) {
-            this.fileInput.nativeElement.click();
-        }
     };
     ImageCropperComponent.prototype.onMouseMove = function (event) {
         this.cropper.onMouseMove(event);
@@ -122,6 +120,7 @@ var ImageCropperComponent = (function () {
     ImageCropperComponent.prototype.setImage = function (image, newBounds) {
         var _this = this;
         if (newBounds === void 0) { newBounds = null; }
+        this.imageSet.emit(true);
         this.renderer.setAttribute(this.cropcanvas.nativeElement, "class", this.settings.cropperClass + " " + this.settings.croppingClass);
         this.raf = window.requestAnimationFrame(function () {
             if (_this.raf) {
@@ -255,6 +254,10 @@ var ImageCropperComponent = (function () {
         core_1.Output(),
         __metadata("design:type", core_1.EventEmitter)
     ], ImageCropperComponent.prototype, "onCrop", void 0);
+    __decorate([
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], ImageCropperComponent.prototype, "imageSet", void 0);
     ImageCropperComponent = __decorate([
         core_1.Component({
             selector: "img-cropper",
