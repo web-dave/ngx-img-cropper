@@ -16,6 +16,7 @@ export declare class ImageCropper extends ImageCropperModel {
     private static detectVerticalSquash(img);
     private getDataUriMimeType(dataUri);
     prepare(canvas: HTMLCanvasElement): void;
+    updateSettings(cropperSettings: CropperSettings): void;
     resizeCanvas(width: number, height: number, setImage?: boolean): void;
     reset(): void;
     draw(ctx: CanvasRenderingContext2D): void;

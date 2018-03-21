@@ -160,6 +160,9 @@ var ImageCropper = /** @class */ (function (_super) {
         this.ctx = this.canvas.getContext('2d');
         this.draw(this.ctx);
     };
+    ImageCropper.prototype.updateSettings = function (cropperSettings) {
+        this.cropperSettings = cropperSettings;
+    };
     ImageCropper.prototype.resizeCanvas = function (width, height, setImage) {
         if (setImage === void 0) { setImage = false; }
         this.canvas.width = this.cropCanvas.width = this.width = this.canvasWidth = this.buffer.width = width;
