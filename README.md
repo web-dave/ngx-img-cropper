@@ -251,3 +251,4 @@ Steps:
 10. npm run copy:release
 11. cd dist
 12. npm publish
+13. cd ..
