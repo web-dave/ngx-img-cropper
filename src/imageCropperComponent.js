@@ -18,6 +18,7 @@ var ImageCropperComponent = (function () {
     function ImageCropperComponent(renderer) {
         this.cropPositionChange = new core_1.EventEmitter();
         this.onCrop = new core_1.EventEmitter();
+        this.imageSet = new core_1.EventEmitter();
         this.renderer = renderer;
     }
     ImageCropperComponent.prototype.ngAfterViewInit = function () {
@@ -54,6 +55,11 @@ var ImageCropperComponent = (function () {
         if (changes.inputImage) {
             this.setImage(changes.inputImage.currentValue);
         }
+        if (changes.settings && this.cropper && this.cropper.isImageSet()) {
+            this.cropper.updateSettings(this.settings);
+            this.image.image = this.cropper.getCroppedImageHelper().src;
+            this.onCrop.emit(this.cropper.getCropBounds());
+        }
     };
     ImageCropperComponent.prototype.ngOnDestroy = function () {
         if (this.settings.dynamicSizing && this.windowListener) {
@@ -83,9 +89,6 @@ var ImageCropperComponent = (function () {
             this.image.image = this.cropper.getCroppedImageHelper().src;
             this.onCrop.emit(this.cropper.getCropBounds());
             this.updateCropBounds();
-        }
-        else if (!this.settings.noFileInput) {
-            this.fileInput.nativeElement.click();
         }
     };
     ImageCropperComponent.prototype.onMouseMove = function (event) {
@@ -122,6 +125,7 @@ var ImageCropperComponent = (function () {
     ImageCropperComponent.prototype.setImage = function (image, newBounds) {
         var _this = this;
         if (newBounds === void 0) { newBounds = null; }
+        this.imageSet.emit(true);
         this.renderer.setAttribute(this.cropcanvas.nativeElement, "class", this.settings.cropperClass + " " + this.settings.croppingClass);
         this.raf = window.requestAnimationFrame(function () {
             if (_this.raf) {
@@ -255,6 +259,10 @@ var ImageCropperComponent = (function () {
         core_1.Output(),
         __metadata("design:type", core_1.EventEmitter)
     ], ImageCropperComponent.prototype, "onCrop", void 0);
+    __decorate([
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], ImageCropperComponent.prototype, "imageSet", void 0);
     ImageCropperComponent = __decorate([
         core_1.Component({
             selector: "img-cropper",
