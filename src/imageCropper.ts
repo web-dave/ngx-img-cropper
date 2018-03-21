@@ -172,6 +172,10 @@ export class ImageCropper extends ImageCropperModel {
         this.draw(this.ctx);
     }
 
+    public updateSettings(cropperSettings: CropperSettings) {
+      this.cropperSettings = cropperSettings;
+    }
+
     public resizeCanvas(width:number, height:number, setImage:boolean = false):void {
         this.canvas.width = this.cropCanvas.width = this.width = this.canvasWidth = this.buffer.width = width;
         this.canvas.height = this.cropCanvas.height = this.height = this.canvasHeight = this.buffer.height = height;
