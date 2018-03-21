@@ -892,17 +892,20 @@ export class ImageCropper extends ImageCropperModel {
 
     public onTouchMove(event:TouchEvent) {
         if (this.crop.isImageSet()) {
-            event.preventDefault();
             if (event.touches.length === 1) {
-                for (let i = 0; i < event.touches.length; i++) {
-                    let touch = event.touches[i];
-                    let touchPosition = ImageCropper.getTouchPos(this.canvas, touch);
-                    let cropTouch = new CropTouch(touchPosition.x, touchPosition.y, touch.identifier);
-                    PointPool.instance.returnPoint(touchPosition);
-                    this.move(cropTouch);
+                if (this.isMouseDown) {
+                    event.preventDefault();
+                    for (let i = 0; i < event.touches.length; i++) {
+                        let touch = event.touches[i];
+                        let touchPosition = ImageCropper.getTouchPos(this.canvas, touch);
+                        let cropTouch = new CropTouch(touchPosition.x, touchPosition.y, touch.identifier);
+                        PointPool.instance.returnPoint(touchPosition);
+                        this.move(cropTouch);
+                    }
                 }
             } else {
                 if (event.touches.length === 2) {
+                    event.preventDefault();
 
                     const distance = ((event.touches[0].clientX - event.touches[1].clientX) * (event.touches[0].clientX - event.touches[1].clientX)) + ((event.touches[0].clientY - event.touches[1].clientY) * (event.touches[0].clientY - event.touches[1].clientY));
                     if (this.previousDistance && this.previousDistance !== distance) {
@@ -1057,10 +1060,23 @@ export class ImageCropper extends ImageCropperModel {
         return false;
     }
 
-    // todo: Unused param
     public onTouchStart(event:TouchEvent) {
         if (this.crop.isImageSet()) {
-            this.isMouseDown = true;
+            let touch = event.touches[0];
+            let touchPosition = ImageCropper.getTouchPos(this.canvas, touch);
+            let cropTouch = new CropTouch(touchPosition.x, touchPosition.y, touch.identifier);
+            PointPool.instance.returnPoint(touchPosition);
+
+            this.isMouseDown = false;
+            for (let i = 0; i < this.markers.length; i++) {
+                let marker: ICornerMarker = this.markers[i];
+                if (marker.touchInBounds(cropTouch.x, cropTouch.y)) {
+                    this.isMouseDown = true;
+                }
+            }
+            if (this.center.touchInBounds(cropTouch.x, cropTouch.y)) {
+                this.isMouseDown = true;
+            }
         }
     }
 

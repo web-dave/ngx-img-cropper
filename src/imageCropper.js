@@ -840,18 +840,21 @@ var ImageCropper = (function (_super) {
     };
     ImageCropper.prototype.onTouchMove = function (event) {
         if (this.crop.isImageSet()) {
-            event.preventDefault();
             if (event.touches.length === 1) {
-                for (var i = 0; i < event.touches.length; i++) {
-                    var touch = event.touches[i];
-                    var touchPosition = ImageCropper.getTouchPos(this.canvas, touch);
-                    var cropTouch = new cropTouch_1.CropTouch(touchPosition.x, touchPosition.y, touch.identifier);
-                    pointPool_1.PointPool.instance.returnPoint(touchPosition);
-                    this.move(cropTouch);
+                if (this.isMouseDown) {
+                    event.preventDefault();
+                    for (var i = 0; i < event.touches.length; i++) {
+                        var touch = event.touches[i];
+                        var touchPosition = ImageCropper.getTouchPos(this.canvas, touch);
+                        var cropTouch = new cropTouch_1.CropTouch(touchPosition.x, touchPosition.y, touch.identifier);
+                        pointPool_1.PointPool.instance.returnPoint(touchPosition);
+                        this.move(cropTouch);
+                    }
                 }
             }
             else {
                 if (event.touches.length === 2) {
+                    event.preventDefault();
                     var distance = ((event.touches[0].clientX - event.touches[1].clientX) * (event.touches[0].clientX - event.touches[1].clientX)) + ((event.touches[0].clientY - event.touches[1].clientY) * (event.touches[0].clientY - event.touches[1].clientY));
                     if (this.previousDistance && this.previousDistance !== distance) {
                         var bounds = this.getBounds();
@@ -1011,7 +1014,20 @@ var ImageCropper = (function (_super) {
     };
     ImageCropper.prototype.onTouchStart = function (event) {
         if (this.crop.isImageSet()) {
-            this.isMouseDown = true;
+            var touch = event.touches[0];
+            var touchPosition = ImageCropper.getTouchPos(this.canvas, touch);
+            var cropTouch = new cropTouch_1.CropTouch(touchPosition.x, touchPosition.y, touch.identifier);
+            pointPool_1.PointPool.instance.returnPoint(touchPosition);
+            this.isMouseDown = false;
+            for (var i = 0; i < this.markers.length; i++) {
+                var marker = this.markers[i];
+                if (marker.touchInBounds(cropTouch.x, cropTouch.y)) {
+                    this.isMouseDown = true;
+                }
+            }
+            if (this.center.touchInBounds(cropTouch.x, cropTouch.y)) {
+                this.isMouseDown = true;
+            }
         }
     };
     ImageCropper.prototype.onTouchEnd = function (event) {
