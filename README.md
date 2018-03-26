@@ -26,7 +26,6 @@ npm start
 
 Do your magic
 
-
 create a branch for your feature and send a PR <br>
 Let's do awesome stuff!
 
@@ -149,11 +148,18 @@ fileChangeListener($event) {
 
 # Changelog
 
+### Release 0.10.2
+
+* IOS Fix
+
+* Angular 5 support
+
 ### Release 0.9.2
 
 * Angular 5 support
 
 ### Release 0.8.9
+
 Fix for #36 - Add button to crop
 Fix for #186 - Handle Hi-Res images
 Fix for #92 - IOS crop issue
@@ -231,7 +237,9 @@ Please change your system.config files to make use of the js files.
 ```
 
 ## Build
+
 should work with one of these
+
 ```
  "release:patch": "npm version patch && npm run release",
  "release:minor": "npm version minor && npm run release",
@@ -239,6 +247,7 @@ should work with one of these
 ```
 
 Steps:
+
 1.  npm test (no tests yet)
 2.  npm run build
 3.  git commit -am \"Prerelease updates\"
