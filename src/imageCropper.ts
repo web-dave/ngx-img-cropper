@@ -225,10 +225,19 @@ export class ImageCropper extends ImageCropperModel {
                 ctx.strokeRect(bounds.left, bounds.top, bounds.width, bounds.height);
             }
             else {
+                ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+                ctx.save();
                 ctx.beginPath();
                 ctx.arc(bounds.left + bounds.width / 2, bounds.top + bounds.height / 2,  bounds.width / 2, 0, 2 * Math.PI);
-                ctx.rect(this.canvasWidth, 0, -this.canvasWidth, this.canvasHeight);
-                ctx.fill();
+                ctx.clip();
+                if (canvasAspect < sourceAspect) {
+                    this.drawImageIOSFix(ctx, this.srcImage, 0, 0, this.srcImage.width, this.srcImage.height,
+                        this.buffer.width / 2 - w / 2, 0, w, h);
+                } else {
+                    this.drawImageIOSFix(ctx, this.srcImage, 0, 0, this.srcImage.width, this.srcImage.height, 0,
+                        this.buffer.height / 2 - h / 2, w, h);
+                }
+                ctx.restore();
             }
 
             let marker:CornerMarker;
