@@ -3,6 +3,9 @@ import { CropperDrawSettings } from "./cropperDrawSettings";
 export interface ICropperSettings {
   canvasWidth?: number;
   canvasHeight?: number;
+  dynamicSizing?: boolean;
+  cropperClass?: string;
+  croppingClass?: string;
   width?: number;
   height?: number;
   minWidth?: number;
@@ -10,15 +13,20 @@ export interface ICropperSettings {
   minWithRelativeToResolution?: boolean;
   croppedWidth?: number;
   croppedHeight?: number;
-  touchRadius?: number;
   cropperDrawSettings?: any;
+  touchRadius?: number;
   noFileInput?: boolean;
+  fileType?: string;
+  resampleFn?: Function;
+  markerSizeMultiplier?: number;
+  centerTouchRadius?: number;
+  showCenterMarker?: boolean;
   allowedFilesRegex?: RegExp;
-  rounded: boolean;
-  keepAspect: boolean;
-  preserveSize: boolean;
-  cropOnResize: boolean;
-  compressRatio: number;
+  cropOnResize?: boolean;
+  preserveSize?: boolean;
+  compressRatio?: number;
+  rounded?: boolean;
+  keepAspect?: boolean;
 }
 
 export class CropperSettings implements ICropperSettings {
@@ -60,33 +68,9 @@ export class CropperSettings implements ICropperSettings {
   private _rounded: boolean = false;
   private _keepAspect: boolean = true;
 
-  constructor(settings?: any) {
+  constructor(settings?: ICropperSettings) {
     if (typeof settings === "object") {
-      this.canvasWidth = settings.canvasWidth || this.canvasWidth;
-      this.canvasHeight = settings.canvasHeight || this.canvasHeight;
-      this.width = settings.width || this.width;
-      this.height = settings.height || this.height;
-      this.minWidth = settings.minWidth || this.minWidth;
-      this.minHeight = settings.minHeight || this.minHeight;
-      this.minWithRelativeToResolution =
-        settings.minWithRelativeToResolution ||
-        this.minWithRelativeToResolution;
-      this.croppedWidth = settings.croppedWidth || this.croppedWidth;
-      this.croppedHeight = settings.croppedHeight || this.croppedHeight;
-      this.touchRadius = settings.touchRadius || this.touchRadius;
-      this.cropperDrawSettings =
-        settings.cropperDrawSettings || this.cropperDrawSettings;
-      this.noFileInput = settings.noFileInput || this.noFileInput;
-      this.allowedFilesRegex =
-        settings.allowedFilesRegex || this.allowedFilesRegex;
-      this.rounded = settings.rounded || this.rounded;
-      this.keepAspect = settings.keepAspect || this.keepAspect;
-      this.preserveSize = settings.preserveSize || this.preserveSize;
-      this.cropOnResize = settings.cropOnResize || this.cropOnResize;
-      this.compressRatio = settings.compressRatio || this.compressRatio;
-
-      this.cropperDrawSettings =
-        settings.cropperDrawSettings || this.cropperDrawSettings;
+      Object.assign(this, settings);
     }
   }
 

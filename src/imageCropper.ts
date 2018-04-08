@@ -36,21 +36,27 @@ export class ImageCropper extends ImageCropperModel {
         this.x = x;
         this.y = y;
 
+        this.canvasHeight = cropperSettings.canvasHeight;
+        this.canvasWidth = cropperSettings.canvasWidth;
+
+        this.width = width;
         if (width === void 0) {
             this.width = 100;
         }
+        this.height = height;
         if (height === void 0) {
             this.height = 50;
         }
+        this.keepAspect = keepAspect;
         if (keepAspect === void 0) {
             this.keepAspect = true;
         }
+        this.touchRadius = touchRadius;
         if (touchRadius === void 0) {
             this.touchRadius = 20;
         }
         this.minWidth = minWidth;
         this.minHeight = minHeight;
-        this.keepAspect = false;
         this.aspectRatio = 0;
         this.currentDragTouches = [];
         this.isMouseDown = false;
@@ -75,9 +81,7 @@ export class ImageCropper extends ImageCropperModel {
         this.br.addVerticalNeighbour(this.tr);
         this.markers = [this.tl, this.tr, this.bl, this.br];
 
-
         this.center = new DragMarker(x + (width / 2), y + (height / 2), centerTouchRadius, this.cropperSettings);
-        this.keepAspect = keepAspect;
         this.aspectRatio = height / width;
         this.croppedImage = new Image();
         this.currentlyInteracting = false;
