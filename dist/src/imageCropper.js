@@ -34,21 +34,26 @@ var ImageCropper = /** @class */ (function (_super) {
         _this.crop = _this;
         _this.x = x;
         _this.y = y;
+        _this.canvasHeight = cropperSettings.canvasHeight;
+        _this.canvasWidth = cropperSettings.canvasWidth;
+        _this.width = width;
         if (width === void 0) {
             _this.width = 100;
         }
+        _this.height = height;
         if (height === void 0) {
             _this.height = 50;
         }
+        _this.keepAspect = keepAspect;
         if (keepAspect === void 0) {
             _this.keepAspect = true;
         }
+        _this.touchRadius = touchRadius;
         if (touchRadius === void 0) {
             _this.touchRadius = 20;
         }
         _this.minWidth = minWidth;
         _this.minHeight = minHeight;
-        _this.keepAspect = false;
         _this.aspectRatio = 0;
         _this.currentDragTouches = [];
         _this.isMouseDown = false;
@@ -71,7 +76,6 @@ var ImageCropper = /** @class */ (function (_super) {
         _this.br.addVerticalNeighbour(_this.tr);
         _this.markers = [_this.tl, _this.tr, _this.bl, _this.br];
         _this.center = new DragMarker(x + (width / 2), y + (height / 2), centerTouchRadius, _this.cropperSettings);
-        _this.keepAspect = keepAspect;
         _this.aspectRatio = height / width;
         _this.croppedImage = new Image();
         _this.currentlyInteracting = false;

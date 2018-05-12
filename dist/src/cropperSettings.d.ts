@@ -2,6 +2,9 @@ import { CropperDrawSettings } from "./cropperDrawSettings";
 export interface ICropperSettings {
     canvasWidth?: number;
     canvasHeight?: number;
+    dynamicSizing?: boolean;
+    cropperClass?: string;
+    croppingClass?: string;
     width?: number;
     height?: number;
     minWidth?: number;
@@ -9,15 +12,20 @@ export interface ICropperSettings {
     minWithRelativeToResolution?: boolean;
     croppedWidth?: number;
     croppedHeight?: number;
-    touchRadius?: number;
     cropperDrawSettings?: any;
+    touchRadius?: number;
     noFileInput?: boolean;
+    fileType?: string;
+    resampleFn?: Function;
+    markerSizeMultiplier?: number;
+    centerTouchRadius?: number;
+    showCenterMarker?: boolean;
     allowedFilesRegex?: RegExp;
-    rounded: boolean;
-    keepAspect: boolean;
-    preserveSize: boolean;
-    cropOnResize: boolean;
-    compressRatio: number;
+    cropOnResize?: boolean;
+    preserveSize?: boolean;
+    compressRatio?: number;
+    rounded?: boolean;
+    keepAspect?: boolean;
 }
 export declare class CropperSettings implements ICropperSettings {
     canvasWidth: number;
@@ -46,7 +54,7 @@ export declare class CropperSettings implements ICropperSettings {
     compressRatio: number;
     private _rounded;
     private _keepAspect;
-    constructor(settings?: any);
+    constructor(settings?: ICropperSettings);
     rounded: boolean;
     keepAspect: boolean;
 }
