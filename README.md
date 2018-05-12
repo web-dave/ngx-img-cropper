@@ -91,13 +91,14 @@ Checkout this [sample plunker](https://embed.plnkr.co/VFwGvAO6MhV06IDTLk5W/)
 * **preserveSize**:_boolean_ - will not scale the resulting image to the croppedWidth/croppedHeight and will output the exact crop size from original
 * **fileType**:_string_ - if defined all images will be converted to desired format. sample: cropperSample.fileType = 'image/jpeg'
 * **compressRatio**:_number_ (default: 1.0) - default compress ratio
-* **dynamicSizing**: (default: false) - if true then the cropper becomes responsive - might introduce performance issues on resize;
-* **cropperClass**: string - set class on canvas element;
-* **croppingClass**: string - appends class to cropper when image is set (#142);
+* **dynamicSizing**: (default: false) - if true then the cropper becomes responsive - might introduce performance issues on resize
+* **cropperClass**: string - set class on canvas element
+* **croppingClass**: string - appends class to cropper when image is set (#142)
 * **resampleFn**: Function(canvas) - function used to resample the cropped image (#136); - see example #3 from runtime sample app
 * **cropOnResize**:_boolean_ (default: true) - if true the cropper will create a new cropped Image object immediately when the crop area is resized
-* **markerSizeMultiplier**:_number_ (default: 1) - A variable that control the corner markers' size
+* **markerSizeMultiplier**:_number_ (default: 1) - A variable that controls the corner markers' size
 * **showCenterMarker**:_boolean_ (default: true) - if true, the drag center marker is visible
+* **keepAspect**:_boolean_ (default: true) - if true, the aspect ratio of `width` and `height` of the crop window is retained during resizing
 
 ## Customizing Image cropper
 
@@ -227,7 +228,7 @@ Fix for #92 - IOS crop issue
 * introduced rounded cropper: cropperSettings.rounded = true. Making keep aspect = false will throw an error on rounded cropper. (Issue #14)
 * cropper takes into consideration source image data pixels not cropper image data. (Issue #17)
 * support for minSize now have the following option: minWithRelativeToResolution. When set to false it will keep min size relative to canvas size. (Issue #21)
-* allow user to customize look and feel of the cropper:  
+* allow user to customize look and feel of the cropper:
    this.cropperSettings.cropperDrawSettings.strokeColor = 'rgba(255,255,255,1)';
   this.cropperSettings.cropperDrawSettings.strokeWidth = 2;
 
