@@ -99,6 +99,7 @@ Checkout this [sample plunker](https://embed.plnkr.co/VFwGvAO6MhV06IDTLk5W/)
 * **markerSizeMultiplier**:_number_ (default: 1) - A variable that controls the corner markers' size
 * **showCenterMarker**:_boolean_ (default: true) - if true, the drag center marker is visible
 * **keepAspect**:_boolean_ (default: true) - if true, the aspect ratio of `width` and `height` of the crop window is retained during resizing
+* **rounded**:_boolean_ (default: false) - if true, the cropper will be rounded. You can't use keepaspect next to this option or it will launch an error.
 
 ## Customizing Image cropper
 
