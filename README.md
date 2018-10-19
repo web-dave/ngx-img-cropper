@@ -149,6 +149,16 @@ fileChangeListener($event) {
 
 # Changelog
 
+### Release 0.11.0
+
+* Angular 7 support
+
+* Remove `dist` folder (or remove the entry in the `.gitignore` file)
+
+* Remove generated Angular files (`*.d.ts`, `*.js`, `*.js.map`, `*.metadata.json`)
+
+* Remove `node_folder` (or remove the entry in the `.gitignore` file)
+
 ### Release 0.10.2
 
 * IOS Fix
