@@ -5,8 +5,6 @@ import { ImageCropperComponent } from '../src/imageCropperComponent';
 import { CropperSettings } from '../src/cropperSettings';
 import { Bounds } from '../src/model/bounds';
 
-import { HttpModule } from '@angular/http';
-
 import { AppComponent } from './app';
 import { TabsModule } from 'ngx-tabs';
 
