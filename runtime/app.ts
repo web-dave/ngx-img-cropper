@@ -1,10 +1,10 @@
 import { AfterViewInit } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { Component, ViewChild, Type } from '@angular/core';
-import {ImageCropperComponent} from '../src/imageCropperComponent';
-import {CropperSettings} from '../src/cropperSettings';
-import {Bounds} from '../src/model/bounds';
-import {CropPosition} from '../src/model/cropPosition';
+import { ImageCropperComponent } from '../src/imageCropperComponent';
+import { CropperSettings } from '../src/cropperSettings';
+import { Bounds } from '../src/model/bounds';
+import { CropPosition } from '../src/model/cropPosition';
 
 @Component({
     selector: 'test-app',
