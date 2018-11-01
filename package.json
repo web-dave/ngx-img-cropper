@@ -4,8 +4,8 @@
   "description": "Image cropping tool for Angular",
   "scripts": {
     "tsc": "tsc",
-    "build": "npm run clean && ngc -p tsconfig-aot.json",
-    "clean": "rimraf dist",
+    "prebuild": "rimraf dist",
+    "build": "ngc -p tsconfig-aot.json",
     "copy:release": "node tools/package.json-cleanup.js && copyfiles README.md LICENSE.md dist",
     "preversion": "npm test && npm run build",
     "version": "git commit -am \"Prerelease updates\" && git checkout -b release && git add -f ./",
