@@ -34,22 +34,6 @@ export class CornerMarker extends Handle implements ICornerMarker {
       vDirection = -this.cropperSettings.markerSizeMultiplier;
     }
 
-    if (this.cropperSettings.rounded) {
-      let width: number = this.position.x - this.horizontalNeighbour.position.x;
-      let height: number = this.position.y - this.verticalNeighbour.position.y;
-
-      let offX: number =
-        Math.round(Math.sin(Math.PI / 2) * Math.abs(width / 2)) / 4;
-      let offY: number =
-        Math.round(Math.sin(Math.PI / 2) * Math.abs(height / 2)) / 4;
-
-      this.offset.x = hDirection > 0 ? offX : -offX;
-      this.offset.y = vDirection > 0 ? offY : -offY;
-    } else {
-      this.offset.x = 0;
-      this.offset.y = 0;
-    }
-
     ctx.beginPath();
     if (this.cropperSettings.cropperDrawSettings.lineDash) {
       ctx.setLineDash([1, 3]);
@@ -95,6 +79,22 @@ export class CornerMarker extends Handle implements ICornerMarker {
     }
     if (this.verticalNeighbour.position.y < this.position.y) {
       vDirection = -this.cropperSettings.markerSizeMultiplier;
+    }
+    
+    if (this.cropperSettings.rounded) {
+      let width: number = this.position.x - this.horizontalNeighbour.position.x;
+      let height: number = this.position.y - this.verticalNeighbour.position.y;
+
+      let offX: number =
+        Math.round(Math.sin(Math.PI / 2) * Math.abs(width / 2)) / 4;
+      let offY: number =
+        Math.round(Math.sin(Math.PI / 2) * Math.abs(height / 2)) / 4;
+
+      this.offset.x = hDirection > 0 ? offX : -offX;
+      this.offset.y = vDirection > 0 ? offY : -offY;
+    } else {
+      this.offset.x = 0;
+      this.offset.y = 0;
     }
 
     ctx.beginPath();
