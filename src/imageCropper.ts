@@ -233,6 +233,7 @@ export class ImageCropper extends ImageCropperModel {
                 ctx.save();
                 ctx.beginPath();
                 ctx.arc(bounds.left + bounds.width / 2, bounds.top + bounds.height / 2,  bounds.width / 2, 0, 2 * Math.PI);
+                ctx.stroke();
                 ctx.clip();
                 if (canvasAspect < sourceAspect) {
                     this.drawImageIOSFix(ctx, this.srcImage, 0, 0, this.srcImage.width, this.srcImage.height,
