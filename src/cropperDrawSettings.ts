@@ -6,6 +6,7 @@ export class CropperDrawSettings {
   public dragIconStrokeWidth: number = 1;
   public dragIconStrokeColor: string = "rgba(0,0,0,1)";
   public dragIconFillColor: string = "rgba(255,255,255,1)";
+  public backgroundFillColor: string = "rgba(0,0,0,0.6)";
 
   constructor(settings?: any) {
     if (typeof settings === "object") {
@@ -19,6 +20,7 @@ export class CropperDrawSettings {
         settings.dragIconStrokeColor || this.dragIconStrokeColor;
       this.dragIconFillColor =
         settings.dragIconFillColor || this.dragIconFillColor;
+      this.backgroundFillColor = settings.backgroundFillColor || this.backgroundFillColor;
     }
   }
 }
