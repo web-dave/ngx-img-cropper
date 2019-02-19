@@ -1,55 +1,46 @@
-/typings
-/dist
-src/**/*.js.map
-src/**/*.d.ts
-src/**/*.js
-runtime/*.js
-index.js.map
-index.d.ts
-index.js
-node_modules
+# See http://help.github.com/ignore-files/ for more about ignoring files.
 
-#################
-## Misc
-#################
-**/.DS_Store
-nbproject
-manifest.mf
-build.xml
-node_modules/*
+# compiled output
+/dist
+/tmp
+/out-tsc
+# Only exists if Bazel was run
+/bazel-out
+
+# dependencies
+/node_modules
+
+# profiling files
+chrome-profiler-events.json
+speed-measure-plugin.json
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
 npm-debug.log
 yarn-error.log
-coverage
-dist/img-cropper-test-app.d.ts
-dist/img-cropper-test-app.js
-dist/img-cropper-test-app.js.map
-!karma.conf.js
-!karma-test-shim.js
-!make.js
-!bundles/*.js
+testem.log
+/typings
 
-#################
-## JetBrains
-#################
-.idea
-.project
-.settings
-.idea/*
-*.iml
-
-############
-## Windows
-############
-
-# Windows image file caches
-Thumbs.db
-
-# Folder config file
-Desktop.ini
-
-############
-## Mac
-############
-
-# Mac crap
+# System Files
 .DS_Store
+Thumbs.db

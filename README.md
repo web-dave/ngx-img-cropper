@@ -14,7 +14,7 @@ The crop image can either be 1:1 or scaled to fit an area.
 
 ## Screenshot
 
-![Screenshot](https://raw.githubusercontent.com/cstefanache/cstefanache.github.io/master/assets/img/cropper.png "Screenshot")
+![Screenshot](https://raw.githubusercontent.com/cstefanache/cstefanache.github.io/master/assets/img/cropper.png 'Screenshot')
 
 ## contributing
 
@@ -39,15 +39,22 @@ Let's do awesome stuff!
 ## Example usage
 
 ```typescript
-import { Component } from "angular2/core";
-import { ImageCropperComponent, CropperSettings } from "ngx-img-cropper";
+import { Component } from 'angular2/core';
+import { ImageCropperComponent, CropperSettings } from 'ngx-img-cropper';
 
 @Component({
-  selector: "test-app",
-  template: `<div>
-        <img-cropper [image]="data" [settings]="cropperSettings"></img-cropper><br>
-        <img [src]="data.image" [width]="cropperSettings.croppedWidth" [height]="cropperSettings.croppedHeight">
-    </div>`,
+  selector: 'test-app',
+  template: `
+    <div>
+      <img-cropper [image]="data" [settings]="cropperSettings"></img-cropper
+      ><br />
+      <img
+        [src]="data.image"
+        [width]="cropperSettings.croppedWidth"
+        [height]="cropperSettings.croppedHeight"
+      />
+    </div>
+  `,
   declarations: [ImageCropperComponent]
 })
 export class AppComponent {
@@ -72,34 +79,34 @@ Checkout this [sample plunker](https://embed.plnkr.co/VFwGvAO6MhV06IDTLk5W/)
 
 ## Settings
 
-* **canvasWidth**:_number_ - Canvas DOM Element width
-* **canvasHeight**:_number_ - Canvas DOM Element height
-* **width**:_number_ - Crop Width
-* **height**:_number_ - Crop Height
-* **minWidth**:_number_ - Minimum crop Width
-* **minHeight**:_number_ - Minimum crop height
-* **croppedWidth**:_number_ - Resulting image width
-* **croppedHeight**:_number_ - Resulting image height
-* **touchRadius**:_number_ - (default: 20) Touch devices radius for the corner markers
-* **centerTouchRadius**:_number_ (default: 20) - Touch devices radius for the drag center marker
-* **minWithRelativeToResolution**:_boolean_ - (default: true) By default the resulting image will be cropped from original image. If false, it will be cropped from canvas pixels
-* **noFileInput**:_boolean_ - (default: false) - hides the file input element from cropper canvas.
-* **cropperDrawSettings**:_CropperDrawSettings_ - rendering options
-  * **strokeWidth**:_number_ - box/ellipsis stroke width
-  * **strokeColor**:_string_ - box/ellipsis stroke color
-* **allowedFilesRegex**:_RegExp_ - (default: /\.(jpe?g|png|gif)$/i) - Regex for allowed images
-* **preserveSize**:_boolean_ - will not scale the resulting image to the croppedWidth/croppedHeight and will output the exact crop size from original
-* **fileType**:_string_ - if defined all images will be converted to desired format. sample: cropperSample.fileType = 'image/jpeg'
-* **compressRatio**:_number_ (default: 1.0) - default compress ratio
-* **dynamicSizing**: (default: false) - if true then the cropper becomes responsive - might introduce performance issues on resize
-* **cropperClass**: string - set class on canvas element
-* **croppingClass**: string - appends class to cropper when image is set (#142)
-* **resampleFn**: Function(canvas) - function used to resample the cropped image (#136); - see example #3 from runtime sample app
-* **cropOnResize**:_boolean_ (default: true) - if true the cropper will create a new cropped Image object immediately when the crop area is resized
-* **markerSizeMultiplier**:_number_ (default: 1) - A variable that controls the corner markers' size
-* **showCenterMarker**:_boolean_ (default: true) - if true, the drag center marker is visible
-* **keepAspect**:_boolean_ (default: true) - if true, the aspect ratio of `width` and `height` of the crop window is retained during resizing
-* **rounded**:_boolean_ (default: false) - if true, the cropper will be a circle.
+- **canvasWidth**:_number_ - Canvas DOM Element width
+- **canvasHeight**:_number_ - Canvas DOM Element height
+- **width**:_number_ - Crop Width
+- **height**:_number_ - Crop Height
+- **minWidth**:_number_ - Minimum crop Width
+- **minHeight**:_number_ - Minimum crop height
+- **croppedWidth**:_number_ - Resulting image width
+- **croppedHeight**:_number_ - Resulting image height
+- **touchRadius**:_number_ - (default: 20) Touch devices radius for the corner markers
+- **centerTouchRadius**:_number_ (default: 20) - Touch devices radius for the drag center marker
+- **minWithRelativeToResolution**:_boolean_ - (default: true) By default the resulting image will be cropped from original image. If false, it will be cropped from canvas pixels
+- **noFileInput**:_boolean_ - (default: false) - hides the file input element from cropper canvas.
+- **cropperDrawSettings**:_CropperDrawSettings_ - rendering options
+  - **strokeWidth**:_number_ - box/ellipsis stroke width
+  - **strokeColor**:_string_ - box/ellipsis stroke color
+- **allowedFilesRegex**:_RegExp_ - (default: /\.(jpe?g|png|gif)\$/i) - Regex for allowed images
+- **preserveSize**:_boolean_ - will not scale the resulting image to the croppedWidth/croppedHeight and will output the exact crop size from original
+- **fileType**:_string_ - if defined all images will be converted to desired format. sample: cropperSample.fileType = 'image/jpeg'
+- **compressRatio**:_number_ (default: 1.0) - default compress ratio
+- **dynamicSizing**: (default: false) - if true then the cropper becomes responsive - might introduce performance issues on resize
+- **cropperClass**: string - set class on canvas element
+- **croppingClass**: string - appends class to cropper when image is set (#142)
+- **resampleFn**: Function(canvas) - function used to resample the cropped image (#136); - see example #3 from runtime sample app
+- **cropOnResize**:_boolean_ (default: true) - if true the cropper will create a new cropped Image object immediately when the crop area is resized
+- **markerSizeMultiplier**:_number_ (default: 1) - A variable that controls the corner markers' size
+- **showCenterMarker**:_boolean_ (default: true) - if true, the drag center marker is visible
+- **keepAspect**:_boolean_ (default: true) - if true, the aspect ratio of `width` and `height` of the crop window is retained during resizing
+- **rounded**:_boolean_ (default: false) - if true, the cropper will be a circle.
 
 ## Customizing Image cropper
 
@@ -107,13 +114,17 @@ Replacing component file input:
 
 ```html
 <div class="file-upload">
-    <span class="text">upload</span>
-    <input id="custom-input" type="file" (change)="fileChangeListener($event)">
+  <span class="text">upload</span>
+  <input id="custom-input" type="file" (change)="fileChangeListener($event)" />
 </div>
 <img-cropper #cropper [image]="data" [settings]="cropperSettings"></img-cropper>
-<br>
-<span class="result rounded" *ngIf="data.image" >
-    <img [src]="data.image" [width]="cropperSettings.croppedWidth" [height]="cropperSettings.croppedHeight">
+<br />
+<span class="result rounded" *ngIf="data.image">
+  <img
+    [src]="data.image"
+    [width]="cropperSettings.croppedWidth"
+    [height]="cropperSettings.croppedHeight"
+  />
 </span>
 ```
 
@@ -146,15 +157,20 @@ fileChangeListener($event) {
 
 # ToDo:
 
-* write tests
+- write tests
 
 # Changelog
 
+### Release 7.0.0
+
+- Build with @angular/cli
+- @angular ^7.2.0
+
 ### Release 0.10.2
 
-* IOS Fix
+- IOS Fix
 
-* Angular 5 support
+- Angular 5 support
 
 ### Release 0.10.1
 
@@ -162,7 +178,7 @@ fileChangeListener($event) {
 
 ### Release 0.9.2
 
-* Angular 5 support
+- Angular 5 support
 
 ### Release 0.8.9
 
@@ -172,65 +188,65 @@ Fix for #92 - IOS crop issue
 
 ### Release 0.8.6
 
-* Dist package cleanup (PR by: @leosvelperez)
+- Dist package cleanup (PR by: @leosvelperez)
 
 ### Release 0.8.4
 
-* Made compatible with Angular 4 && AOT
+- Made compatible with Angular 4 && AOT
 
 ### Release 0.8.2
 
-* CR: #148 - removed ts files from output package.
-* fix for #150 - made fileType undefined as default. if defined it will enforce output format
+- CR: #148 - removed ts files from output package.
+- fix for #150 - made fileType undefined as default. if defined it will enforce output format
 
 ### Release 0.8.1
 
-* added dynamicSizing, cropperClass for responsive purposes
+- added dynamicSizing, cropperClass for responsive purposes
 
 ### Release 0.8
 
-* added reset() method on ImageCropperComponent - fix for #118
-* added compressRatio as parameter in the cropper settings
+- added reset() method on ImageCropperComponent - fix for #118
+- added compressRatio as parameter in the cropper settings
 
 ### Release 0.7.6
 
-* 21 Bugs in the code, I fixed 3, (hopefully not) 30 Bugs in the code
+- 21 Bugs in the code, I fixed 3, (hopefully not) 30 Bugs in the code
 
 ### Release 0.7.1
 
-* Fixed #87 get unsacled crop of image
+- Fixed #87 get unsacled crop of image
 
 ### Release 0.7.0
 
-* update for AngularJS 2.0.1
-* removed typings
-* fixed aspect ratio issue
-* made cropper property public
-* added onmouseleave behavior
+- update for AngularJS 2.0.1
+- removed typings
+- fixed aspect ratio issue
+- made cropper property public
+- added onmouseleave behavior
 
 ### Release 0.6.1
 
-* Fixed issue #49 - Error on reading exif
+- Fixed issue #49 - Error on reading exif
 
 ### Release 0.6.0
 
-* Parsed EXIF information for image orientation
-* fixed multiple browser compatibility issues
-* added accepted files regex
-* updated to Angular RC5
+- Parsed EXIF information for image orientation
+- fixed multiple browser compatibility issues
+- added accepted files regex
+- updated to Angular RC5
 
 ### Release 0.5.0
 
-* introduced flag to hide the component file input in order to allow customization
-* added pinch/zoom feature for touch devices
+- introduced flag to hide the component file input in order to allow customization
+- added pinch/zoom feature for touch devices
 
 ### Release 0.4.5:
 
-* introduced rounded cropper: cropperSettings.rounded = true. Making keep aspect = false will throw an error on rounded cropper. (Issue #14)
-* cropper takes into consideration source image data pixels not cropper image data. (Issue #17)
-* support for minSize now have the following option: minWithRelativeToResolution. When set to false it will keep min size relative to canvas size. (Issue #21)
-* allow user to customize look and feel of the cropper:
-   this.cropperSettings.cropperDrawSettings.strokeColor = 'rgba(255,255,255,1)';
+- introduced rounded cropper: cropperSettings.rounded = true. Making keep aspect = false will throw an error on rounded cropper. (Issue #14)
+- cropper takes into consideration source image data pixels not cropper image data. (Issue #17)
+- support for minSize now have the following option: minWithRelativeToResolution. When set to false it will keep min size relative to canvas size. (Issue #21)
+- allow user to customize look and feel of the cropper:
+  this.cropperSettings.cropperDrawSettings.strokeColor = 'rgba(255,255,255,1)';
   this.cropperSettings.cropperDrawSettings.strokeWidth = 2;
 
 ### Release 0.4.2:
