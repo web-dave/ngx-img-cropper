@@ -161,6 +161,8 @@ fileChangeListener($event) {
 
 # Changelog
 
+### Release 7.0.2
+
 ### Release 7.0.0
 
 - Build with @angular/cli
