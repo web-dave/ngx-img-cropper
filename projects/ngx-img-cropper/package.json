@@ -1,6 +1,6 @@
 {
   "name": "ngx-img-cropper",
-  "version": "7.0.2",
+  "version": "7.0.3",
   "peerDependencies": {
     "@angular/common": "^7.2.0",
     "@angular/core": "^7.2.0"
