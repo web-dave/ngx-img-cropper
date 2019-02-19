@@ -34,24 +34,6 @@ export class CornerMarker extends Handle implements ICornerMarker {
       vDirection = -this.cropperSettings.markerSizeMultiplier;
     }
 
-    if (this.cropperSettings.rounded) {
-      const width: number =
-        this.position.x - this.horizontalNeighbour.position.x;
-      const height: number =
-        this.position.y - this.verticalNeighbour.position.y;
-
-      const offX: number =
-        Math.round(Math.sin(Math.PI / 2) * Math.abs(width / 2)) / 4;
-      const offY: number =
-        Math.round(Math.sin(Math.PI / 2) * Math.abs(height / 2)) / 4;
-
-      this.offset.x = hDirection > 0 ? offX : -offX;
-      this.offset.y = vDirection > 0 ? offY : -offY;
-    } else {
-      this.offset.x = 0;
-      this.offset.y = 0;
-    }
-
     ctx.beginPath();
     if (this.cropperSettings.cropperDrawSettings.lineDash) {
       ctx.setLineDash([1, 3]);
@@ -99,6 +81,24 @@ export class CornerMarker extends Handle implements ICornerMarker {
       vDirection = -this.cropperSettings.markerSizeMultiplier;
     }
 
+    if (this.cropperSettings.rounded) {
+      const width: number =
+        this.position.x - this.horizontalNeighbour.position.x;
+      const height: number =
+        this.position.y - this.verticalNeighbour.position.y;
+
+      const offX: number =
+        Math.round(Math.sin(Math.PI / 2) * Math.abs(width / 2)) / 4;
+      const offY: number =
+        Math.round(Math.sin(Math.PI / 2) * Math.abs(height / 2)) / 4;
+
+      this.offset.x = hDirection > 0 ? offX : -offX;
+      this.offset.y = vDirection > 0 ? offY : -offY;
+    } else {
+      this.offset.x = 0;
+      this.offset.y = 0;
+    }
+
     ctx.beginPath();
     if (this.cropperSettings.cropperDrawSettings.lineDash) {
       ctx.setLineDash([1, 3]);
@@ -125,7 +125,7 @@ export class CornerMarker extends Handle implements ICornerMarker {
     );
     ctx.closePath();
     ctx.fillStyle =
-      this.cropperSettings.cropperDrawSettings.strokeColor ||
+      this.cropperSettings.cropperDrawSettings.fillColor ||
       'rgba(255,255,255,.7)';
     ctx.fill();
   }

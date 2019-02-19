@@ -278,9 +278,9 @@ export class ImageCropper extends ImageCropperModel {
       );
 
       ctx.lineWidth = this.cropperSettings.cropperDrawSettings.strokeWidth;
-      ctx.strokeStyle = this.cropperSettings.cropperDrawSettings.strokeColor; // 'rgba(255,228,0,1)';
+      ctx.strokeStyle = this.cropperSettings.cropperDrawSettings.strokeColor;
 
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.6)';
+      ctx.fillStyle = this.cropperSettings.cropperDrawSettings.backgroundFillColor;
       if (!this.cropperSettings.rounded) {
         ctx.fillRect(0, 0, this.canvasWidth, this.canvasHeight);
         ctx.drawImage(
@@ -306,6 +306,7 @@ export class ImageCropper extends ImageCropperModel {
           0,
           2 * Math.PI
         );
+        ctx.stroke();
         ctx.clip();
         if (canvasAspect < sourceAspect) {
           this.drawImageIOSFix(
