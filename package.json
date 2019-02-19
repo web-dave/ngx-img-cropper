@@ -6,6 +6,8 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "prebuild:lib": "npm version patch",
+    "build:lib": "ng build --project ngx-img-cropper",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
