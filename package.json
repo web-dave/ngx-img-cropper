@@ -1,6 +1,6 @@
 {
   "name": "ngx-img-cropper",
-  "version": "7.0.1",
+  "version": "7.0.2",
   "description": "Image cropping tool for Angular",
   "scripts": {
     "ng": "ng",
@@ -9,7 +9,8 @@
     "build:lib": "ng build --project ngx-img-cropper",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "pub": "cd dist/ngx-img-cropper && npm publish"
   },
   "private": true,
   "repository": {
