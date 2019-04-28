@@ -1,4 +1,4 @@
-import { Bounds } from "./bounds";
+import { Bounds } from './bounds';
 
 export class CropPosition {
   public x: number;

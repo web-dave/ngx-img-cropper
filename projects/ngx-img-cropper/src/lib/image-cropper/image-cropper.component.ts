@@ -21,8 +21,7 @@ import { Exif } from './exif';
 @Component({
   // tslint:disable-next-line:component-selector
   selector: 'img-cropper',
-  templateUrl: './image-cropper.component.html',
-  styleUrls: ['./image-cropper.component.css']
+  templateUrl: './image-cropper.component.html'
 })
 export class ImageCropperComponent
   implements AfterViewInit, OnChanges, OnDestroy {
@@ -30,12 +29,9 @@ export class ImageCropperComponent
   cropcanvas: ElementRef;
   @ViewChild('fileInput') fileInput: ElementRef;
 
-  // tslint:disable-next-line:no-input-rename
-  @Input('settings') public settings: CropperSettings;
-  // tslint:disable-next-line:no-input-rename
-  @Input('image') public image: any;
-  // tslint:disable-next-line:no-input-rename
-  @Input('inputImage') public inputImage: any;
+  @Input() public settings: CropperSettings;
+  @Input() public image: any;
+  @Input() public inputImage: any;
   @Input() public cropper: ImageCropper;
   @Input() public cropPosition: CropPosition;
   @Output()

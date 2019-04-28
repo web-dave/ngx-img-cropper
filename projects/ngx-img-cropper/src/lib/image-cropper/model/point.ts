@@ -9,8 +9,8 @@ export class Point implements IPoint {
   public x: number;
   public y: number;
 
-  private _next: Point;
-  private _prev: Point;
+  private myNext: Point;
+  private myPrev: Point;
 
   constructor(x: number = 0, y: number = 0) {
     this.x = x;
@@ -18,18 +18,18 @@ export class Point implements IPoint {
   }
 
   public get next(): Point {
-    return this._next;
+    return this.myNext;
   }
 
   public set next(p: Point) {
-    this._next = p;
+    this.myNext = p;
   }
 
   public get prev(): Point {
-    return this._prev;
+    return this.myPrev;
   }
 
   public set prev(p: Point) {
-    this._prev = p;
+    this.myPrev = p;
   }
 }

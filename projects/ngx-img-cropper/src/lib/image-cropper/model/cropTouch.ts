@@ -1,6 +1,4 @@
-import { DragMarker } from "./dragMarker";
-import { CornerMarker } from "./cornerMarker";
-import { IHandle } from "./handle";
+import { IHandle } from './handle';
 
 export class CropTouch {
   public x: number;
