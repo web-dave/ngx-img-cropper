@@ -131,7 +131,7 @@ Replacing component file input:
 ```typescript
 data:any;
 
-@ViewChild('cropper', undefined)
+@ViewChild('cropper')
 cropper:ImageCropperComponent;
 
 constructor() {
