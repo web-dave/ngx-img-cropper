@@ -25,9 +25,9 @@ import { Exif } from './exif';
 })
 export class ImageCropperComponent
   implements AfterViewInit, OnChanges, OnDestroy {
-  @ViewChild('cropcanvas')
+  @ViewChild('cropcanvas', { static: true })
   cropcanvas: ElementRef;
-  @ViewChild('fileInput') fileInput: ElementRef;
+  @ViewChild('fileInput', { static: false }) fileInput: ElementRef;
 
   @Input() public settings: CropperSettings;
   @Input() public image: any;

@@ -17,16 +17,16 @@ export class AppComponent {
   public data2: any;
   public cropperSettings2: CropperSettings;
 
-  @ViewChild('cropper1')
+  @ViewChild('cropper1', { static: true })
   public cropper1: ImageCropperComponent;
 
-  @ViewChild('cropper2')
+  @ViewChild('cropper2', { static: true })
   public cropper2: ImageCropperComponent;
 
-  @ViewChild('cropper3')
+  @ViewChild('cropper3', { static: true })
   public cropper3: ImageCropperComponent;
 
-  @ViewChild('cropper4')
+  @ViewChild('cropper4', { static: true })
   public cropper4: ImageCropperComponent;
 
   public onChange: ($event: any) => void;
