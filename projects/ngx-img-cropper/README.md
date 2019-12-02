@@ -1,9 +1,8 @@
 # ngx-img-cropper
 
-## I inherited this project from cstefanache [angular2-img-cropper](https://github.com/cstefanache/angular2-img-cropper)
+## Angular 9 (ivy) compatible!
 
-This is an adapatation of Angular 1 image cropper from: https://github.com/AllanBishop/angular-img-cropper
-An image cropping tool for AngularJS. Features a rectangular crop area. The crop area's aspect ratio can be enforced during dragging.
+An image cropping tool for Angular. Features a rectangular crop area. The crop area's aspect ratio can be enforced during dragging.
 The crop image can either be 1:1 or scaled to fit an area.
 
 ## Install from NPM
