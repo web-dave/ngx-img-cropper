@@ -9,13 +9,14 @@ import {
   Output,
   EventEmitter,
   Renderer2,
-  SimpleChanges
+  SimpleChanges, Inject
 } from '@angular/core';
 import { CropperSettings } from './cropper-settings';
 import { ImageCropper } from './imageCropper';
 import { CropPosition } from './model/cropPosition';
 import { Bounds } from './model/bounds';
 import { Exif } from './exif';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -52,8 +53,10 @@ export class ImageCropperComponent
   public windowListener: EventListenerObject;
 
   private isCropPositionUpdateNeeded: boolean;
+  private dragUnsubscribers: (() => void)[] = [];
 
-  constructor(renderer: Renderer2) {
+  constructor(renderer: Renderer2,
+              @Inject(DOCUMENT) private document) {
     this.renderer = renderer;
   }
 
@@ -116,6 +119,7 @@ export class ImageCropperComponent
   }
 
   public ngOnDestroy() {
+    this.removeDragListeners();
     if (this.settings.dynamicSizing && this.windowListener) {
       window.removeEventListener('resize', this.windowListener);
     }
@@ -139,6 +143,9 @@ export class ImageCropperComponent
   }
 
   public onMouseDown(event: MouseEvent): void {
+    this.dragUnsubscribers.push(this.renderer.listen(this.document, 'mousemove', this.onMouseMove.bind(this)));
+    this.dragUnsubscribers.push(this.renderer.listen(this.document, 'mouseup', this.onMouseUp.bind(this)));
+
     this.cropper.onMouseDown(event);
     // if (!this.cropper.isImageSet() && !this.settings.noFileInput) {
     //   // load img
@@ -146,7 +153,12 @@ export class ImageCropperComponent
     // }
   }
 
+  private removeDragListeners() {
+    this.dragUnsubscribers.forEach(unsubscribe => unsubscribe());
+  }
+
   public onMouseUp(event: MouseEvent): void {
+    this.removeDragListeners();
     if (this.cropper.isImageSet()) {
       this.cropper.onMouseUp(event);
       this.image.image = this.cropper.getCroppedImageHelper().src;
