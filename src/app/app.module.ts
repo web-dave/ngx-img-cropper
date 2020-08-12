@@ -6,8 +6,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTabsModule } from '@angular/material/tabs';
 
 import { AppComponent } from './app.component';
-// import { ImageCropperModule } from 'projects/ngx-img-cropper/src/public_api';
-import { ImageCropperModule } from 'dist/ngx-img-cropper';
+import { ImageCropperModule } from 'projects/ngx-img-cropper/src/public_api';
 
 @NgModule({
   declarations: [AppComponent],
