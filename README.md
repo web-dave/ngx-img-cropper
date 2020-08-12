@@ -55,7 +55,7 @@ import { ImageCropperComponent, CropperSettings } from 'ngx-img-cropper';
       />
     </div>
   `,
-  declarations: [ImageCropperComponent]
+  declarations: [ImageCropperComponent],
 })
 export class AppComponent {
   data: any;
@@ -160,6 +160,10 @@ fileChangeListener($event) {
 - write tests
 
 # Changelog
+
+### Release ^10.0.8
+
+- @angular ^7.2.0
 
 ### Release 7.0.0
 
