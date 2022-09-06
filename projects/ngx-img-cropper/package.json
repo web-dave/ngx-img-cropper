@@ -1,9 +1,9 @@
 {
   "name": "ngx-img-cropper",
-  "version": "11.0.0",
+  "version": "14.0.0",
   "peerDependencies": {
-    "@angular/common": ">=10.0.8",
-    "@angular/core": ">=10.0.8"
+    "@angular/common": ">=14.2.0",
+    "@angular/core": ">=14.2.0"
   },
   "dependencies": {
     "tslib": "^2.0.0"

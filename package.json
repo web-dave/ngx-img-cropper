@@ -1,6 +1,6 @@
 {
   "name": "ngx-img-cropper",
-  "version": "11.0.0",
+  "version": "14.0.0",
   "description": "Image cropping tool for Angular",
   "scripts": {
     "ng": "ng",
