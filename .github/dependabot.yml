@@ -4,8 +4,16 @@
 # https://docs.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
 
 version: 2
+
 updates:
-  - package-ecosystem: "npm" # See documentation for possible values
-    directory: "/" # Location of package manifests
+  - package-ecosystem: 'npm' # See documentation for possible values
+    directory: '/' # Location of package manifests
     schedule:
-      interval: "weekly"
+      interval: 'weekly'
+    open-pull-requests-limit: 5
+
+  - package-ecosystem: 'github-actions' # See documentation for possible values
+    directory: '/' # Location of package manifests
+    schedule:
+      interval: 'weekly'
+    open-pull-requests-limit: 5
