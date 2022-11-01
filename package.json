@@ -10,6 +10,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
+    "ci:pub": "npm run build:lib && npm run pub",
     "pub": "cd dist/ngx-img-cropper && npm publish"
   },
   "private": true,
