@@ -1,0 +1,39 @@
+name: Automerge dependabot PRs
+on:
+    pull_request:
+        types: opened
+
+permissions:
+    contents: write
+    pull-requests: write
+
+jobs:
+  ngximgcrop:
+    name: Check
+    runs-on: ubuntu-latest
+    if: ${{ github.event.pull_request.user.login == 'dependabot[bot]' }}
+    strategy:
+      matrix:
+        node-version: [ 16.x, 18.x ]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3.5.0
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      - run: npm i --force
+      # - run: npm run lint
+      - run: npm run build --if-present
+  
+  automerge:
+    name: Automerge
+    runs-on: ubuntu-latest
+    needs: ngximgcrop
+    if: ${{ github.event.pull_request.user.login == 'dependabot[bot]' }}
+    steps:
+      - name: Automerge PR
+        run: gh pr merge --auto --merge "$PR_URL"
+        env:
+          PR_URL: ${{github.event.pull_request.html_url}}
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
